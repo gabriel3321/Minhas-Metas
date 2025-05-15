@@ -2,35 +2,59 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minhas Metas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="metas-container">
-    <h1>📁 Arquivos de Metas</h1>
-    <ul id="lista-arquivos">Carregando arquivos...</ul>
+    <h1>Plano de Estudos para Ser um Ótimo Programador (13 a 18 anos)</h1>
+    <section>
+      <h2>Começando Agora</h2>
+      <p>É ótimo que você esteja começando cedo! Programar é uma habilidade que você pode melhorar bastante com prática e paciência. Aqui vai um plano para você crescer de 13 até 18 anos:</p>
+    </section>
+
+    <section>
+      <h2>Idade 13-14</h2>
+      <ul>
+        <li>Aprenda lógica de programação com jogos como Scratch ou Blockly.</li>
+        <li>Estude HTML e CSS para criar sites básicos.</li>
+        <li>Pratique programação em Python, que é simples e poderoso.</li>
+        <li>Faça pequenos projetos, tipo jogos simples ou calculadoras.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Idade 15-16</h2>
+      <ul>
+        <li>Aprenda JavaScript para fazer sites interativos.</li>
+        <li>Explore bancos de dados básicos com MySQL ou SQLite.</li>
+        <li>Comece a entender Git e GitHub para controlar seu código.</li>
+        <li>Construa projetos maiores, como blogs ou pequenos apps.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Idade 17-18</h2>
+      <ul>
+        <li>Estude frameworks modernos (React, Node.js, etc.).</li>
+        <li>Aprenda sobre backend e APIs.</li>
+        <li>Pratique programação orientada a objetos.</li>
+        <li>Crie projetos reais e publique no GitHub.</li>
+        <li>Participe de comunidades de programadores e hackathons.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Dicas Finais</h2>
+      <ul>
+        <li>Seja paciente e pratique todo dia.</li>
+        <li>Não tenha medo de errar — aprender com erros é essencial.</li>
+        <li>Peça ajuda e participe de grupos e fóruns online.</li>
+        <li>Explore diferentes linguagens para descobrir o que mais gosta.</li>
+      </ul>
+    </section>
   </div>
-
-  <script>
-    // Substitua pelo SEU usuário e repositório do GitHub
-    const usuario = "Gabriel";
-    const repositorio = "minhas-metas"; // Ex: nome do seu repositório
-
-    fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/`)
-      .then(res => res.json())
-      .then(arquivos => {
-        const lista = document.getElementById('lista-arquivos');
-        lista.innerHTML = '';
-        arquivos.forEach(arq => {
-          const li = document.createElement('li');
-          li.innerHTML = `<a href="${arq.download_url}" target="_blank">${arq.name}</a>`;
-          lista.appendChild(li);
-        });
-      })
-      .catch(() => {
-        document.getElementById('lista-arquivos').innerText = 'Erro ao carregar arquivos.';
-      });
-  </script>
 </body>
 </html>
