@@ -10,7 +10,53 @@
 <body>
   <div class="metas-container">
     <h1>Bem-vindo, Branquelo!</h1>
-    <p>Você está pronto para jogar quando quiser!</p>
+
+    <h2>Status do Gabriel:</h2>
+    <p id="statusGabriel">Carregando...</p>
+
+    <button id="btnBranquelo">Quero jogar</button>
   </div>
+
+  <script>
+    const statusGabrielEl = document.getElementById('statusGabriel');
+    const btnBranquelo = document.getElementById('btnBranquelo');
+
+    function atualizarStatusGabriel() {
+      const status = localStorage.getItem('gabriel_quer_jogar');
+      if (status === 'sim') {
+        statusGabrielEl.innerText = 'Gabriel quer jogar! 🎮';
+      } else if (status === 'nao') {
+        statusGabrielEl.innerText = 'Gabriel não quer jogar.';
+      } else {
+        statusGabrielEl.innerText = 'Gabriel ainda não respondeu.';
+      }
+    }
+
+    function atualizarBotaoBranquelo() {
+      const status = localStorage.getItem('branquelo_quer_jogar');
+      if (status === 'sim') {
+        btnBranquelo.innerText = 'Não quero jogar';
+        btnBranquelo.style.backgroundColor = '#ff4444';
+      } else {
+        btnBranquelo.innerText = 'Quero jogar';
+        btnBranquelo.style.backgroundColor = '#00ff88';
+      }
+    }
+
+    btnBranquelo.addEventListener('click', () => {
+      const statusAtual = localStorage.getItem('branquelo_quer_jogar');
+      if (statusAtual === 'sim') {
+        localStorage.setItem('branquelo_quer_jogar', 'nao');
+      } else {
+        localStorage.setItem('branquelo_quer_jogar', 'sim');
+      }
+      atualizarBotaoBranquelo();
+    });
+
+    atualizarStatusGabriel();
+    atualizarBotaoBranquelo();
+
+    setInterval(atualizarStatusGabriel, 3000);
+  </script>
 </body>
 </html>
