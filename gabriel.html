@@ -11,13 +11,58 @@
   <div class="metas-container">
     <h1>Olá, Gabriel!</h1>
     <p>Sua taxa de felicidade hoje é: <span id="felicidade">87%</span></p>
-    <button onclick="chamarBranquelo()">Chamar Branquelo pra jogar</button>
+
+    <h2>Status do Branquelo:</h2>
+    <p id="statusBranquelo">Carregando...</p>
+
+    <button id="btnGabriel">Quero jogar</button>
   </div>
 
   <script>
-    function chamarBranquelo() {
-      alert('Chamando Branquelo para jogar! 🎮');
+    const statusBranqueloEl = document.getElementById('statusBranquelo');
+    const btnGabriel = document.getElementById('btnGabriel');
+
+    // Função pra atualizar o status do Branquelo na tela
+    function atualizarStatusBranquelo() {
+      const status = localStorage.getItem('branquelo_quer_jogar');
+      if (status === 'sim') {
+        statusBranqueloEl.innerText = 'Branquelo quer jogar! 🎮';
+      } else if (status === 'nao') {
+        statusBranqueloEl.innerText = 'Branquelo não quer jogar.';
+      } else {
+        statusBranqueloEl.innerText = 'Branquelo ainda não respondeu.';
+      }
     }
+
+    // Função pra atualizar o botão do Gabriel conforme o status atual
+    function atualizarBotaoGabriel() {
+      const status = localStorage.getItem('gabriel_quer_jogar');
+      if (status === 'sim') {
+        btnGabriel.innerText = 'Não quero jogar';
+        btnGabriel.style.backgroundColor = '#ff4444';
+      } else {
+        btnGabriel.innerText = 'Quero jogar';
+        btnGabriel.style.backgroundColor = '#00ff88';
+      }
+    }
+
+    // Quando Gabriel clica no botão, alterna o status e salva no localStorage
+    btnGabriel.addEventListener('click', () => {
+      const statusAtual = localStorage.getItem('gabriel_quer_jogar');
+      if (statusAtual === 'sim') {
+        localStorage.setItem('gabriel_quer_jogar', 'nao');
+      } else {
+        localStorage.setItem('gabriel_quer_jogar', 'sim');
+      }
+      atualizarBotaoGabriel();
+    });
+
+    // Atualiza tudo ao carregar a página
+    atualizarStatusBranquelo();
+    atualizarBotaoGabriel();
+
+    // Também atualiza o status do Branquelo a cada 3 segundos para pegar mudanças
+    setInterval(atualizarStatusBranquelo, 3000);
   </script>
 </body>
 </html>
