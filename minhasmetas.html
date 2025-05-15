@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minhas Metas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="metas-container">
+    <h1>📁 Arquivos de Metas</h1>
+    <ul id="lista-arquivos">Carregando arquivos...</ul>
+  </div>
+
+  <script>
+    // Substitua pelo SEU usuário e repositório do GitHub
+    const usuario = "Gabriel";
+    const repositorio = "minhas-metas"; // Ex: nome do seu repositório
+
+    fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/`)
+      .then(res => res.json())
+      .then(arquivos => {
+        const lista = document.getElementById('lista-arquivos');
+        lista.innerHTML = '';
+        arquivos.forEach(arq => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${arq.download_url}" target="_blank">${arq.name}</a>`;
+          lista.appendChild(li);
+        });
+      })
+      .catch(() => {
+        document.getElementById('lista-arquivos').innerText = 'Erro ao carregar arquivos.';
+      });
+  </script>
+</body>
+</html>
