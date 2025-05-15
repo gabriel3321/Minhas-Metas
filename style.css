@@ -14,31 +14,9 @@ body {
   box-shadow: 0 0 20px #00ff88;
 }
 
-h1, h2 {
+h1 {
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88;
-}
-
-ul {
-  list-style-type: square;
-  padding-left: 20px;
-}
-
-li {
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-
-input {
-  display: block;
-  width: 90%;
-  margin: 12px auto;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #222;
-  color: #00ff88;
-  font-size: 16px;
 }
 
 button {
@@ -56,6 +34,18 @@ button {
 
 button:hover {
   background-color: #00cc66;
+}
+
+input {
+  display: block;
+  width: 90%;
+  margin: 12px auto;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  color: #00ff88;
+  font-size: 16px;
 }
 
 .error {
